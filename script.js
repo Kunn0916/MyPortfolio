@@ -1,4 +1,30 @@
- /* ─────────────────────────────────────────────────
+async function query(data) {
+    const response = await fetch(
+        "https://cloud.flowiseai.com/api/v1/vector/upsert/8de78eb0-6750-4460-b0c6-109aeeb49dd3",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+    );
+    const result = await response.json();
+    return result;
+}
+
+query({
+  "overrideConfig": {
+      "topK": 1,
+      "url": "example",
+      "relativeLinksMethod": "example",
+      "limit": 1,
+  }
+}).then((response) => {
+    console.log(response);
+});
+
+/* ─────────────────────────────────────────────────
      THEME & NAV
   ───────────────────────────────────────────────── */
   let isDark = true;
